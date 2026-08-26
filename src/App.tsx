@@ -40,14 +40,14 @@ const questions = [
 // =====================================
 
 const positions = [
-  '-4 1.5 -6',
-  '4 1.5 -6',
-  '-5 1.5 -3',
-  '5 1.5 -3',
-  '-3 1.5 1',
-  '3 1.5 1',
-  '-4 1.5 3',
-  '4 1.5 3',
+  '-5 1.7 -4',   // left front
+  '5 1.7 -4',    // right front
+  '-5 1.7 0',    // left
+  '5 1.7 0',     // right
+  '-4 1.7 4',    // left back
+  '4 1.7 4',     // right back
+  '0 1.7 5',     // directly behind
+  '0 1.7 -6',    // directly in front
 ]
 
 
@@ -65,6 +65,36 @@ function getRandomPositions() {
     sphere: shuffled[1],
     cylinder: shuffled[2],
   }
+}
+// =====================================
+// FLOATING SHAPE COMPONENT
+// =====================================
+
+if (!(window as any).AFRAME.components['float-shape']) {
+  (window as any).AFRAME.registerComponent('float-shape', {
+    schema: {
+      amount: { type: 'number', default: 0.15 },
+      speed: { type: 'number', default: 0.002 },
+    },
+
+    init() {
+      const position = this.el.getAttribute('position')
+
+      this.baseY = position.y
+      this.startTime = performance.now()
+    },
+
+    tick(time: number) {
+      const elapsed = time - this.startTime
+
+      const y =
+        this.baseY +
+        Math.sin(elapsed * this.data.speed) *
+          this.data.amount
+
+      this.el.object3D.position.y = y
+    },
+  })
 }
 
 
@@ -205,10 +235,11 @@ function App() {
             questions.length - 1
           ) {
 
-            setQuestionIndex(
-              previousIndex =>
-                previousIndex + 1
-            )
+            setShapePositions(getRandomPositions())
+setQuestionIndex(
+  previousIndex =>
+    previousIndex + 1
+)
 
           } else {
 
@@ -500,7 +531,8 @@ function App() {
           position={
             shapePositions.cube
           }
-
+          float-shape="amount: 0.15; speed: 0.002"
+          
           rotation="0 30 0"
 
           color="#e85d3f"
@@ -523,15 +555,6 @@ function App() {
             dur: 200
           "
 
-          animation="
-            property: position;
-            dir: alternate;
-            dur: 1800;
-            easing: easeInOutSine;
-            loop: true;
-            to: -4 1.9 -6
-          "
-
           onClick={() =>
             checkAnswer('cube')
           }
@@ -548,7 +571,8 @@ function App() {
           position={
             shapePositions.sphere
           }
-
+          float-shape="amount: 0.20; speed: 0.0018"
+          
           radius="1.2"
 
           color="#4d7cff"
@@ -565,15 +589,6 @@ function App() {
             to: 1 1 1;
             startEvents: mouseleave;
             dur: 200
-          "
-
-          animation="
-            property: position;
-            dir: alternate;
-            dur: 2200;
-            easing: easeInOutSine;
-            loop: true;
-            to: 4 1.9 -6
           "
 
           onClick={() =>
@@ -593,6 +608,8 @@ function App() {
             shapePositions.cylinder
           }
 
+          float-shape="amount: 0.18; speed: 0.002"
+          
           radius="1"
 
           height="2.5"
@@ -611,15 +628,6 @@ function App() {
             to: 1 1 1;
             startEvents: mouseleave;
             dur: 200
-          "
-
-          animation="
-            property: position;
-            dir: alternate;
-            dur: 2000;
-            easing: easeInOutSine;
-            loop: true;
-            to: 3 1.9 -6
           "
 
           onClick={() =>
