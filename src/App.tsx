@@ -308,8 +308,8 @@ setQuestionIndex(
         {/* ================================= */}
 
         <a-sky
-          color="#171329"
-        ></a-sky>
+  color="#87CEEB"
+></a-sky>
 
 
         {/* ================================= */}
@@ -317,13 +317,12 @@ setQuestionIndex(
         {/* ================================= */}
 
         <a-plane
-          position="0 0 0"
-          rotation="-90 0 0"
-          width="30"
-          height="30"
-          color="#29233f"
-        ></a-plane>
-
+  position="0 0 0"
+  rotation="-90 0 0"
+  width="30"
+  height="30"
+  color="#5f9f45"
+></a-plane>
 
         {/* ================================= */}
         {/* LIGHTING */}
@@ -340,6 +339,129 @@ setQuestionIndex(
           intensity="1.5"
         ></a-light>
 
+{/* ================================= */}
+{/* HARVEST TOWN TREES */}
+{/* ================================= */}
+
+<a-entity position="-8 0 -6">
+
+  {/* Tree trunk */}
+  <a-cylinder
+    radius="0.35"
+    height="2"
+    color="#6b4423"
+    position="0 1 0"
+  ></a-cylinder>
+
+  {/* Tree leaves */}
+  <a-sphere
+    radius="1.5"
+    color="#3f7f3a"
+    position="0 2.5 0"
+  ></a-sphere>
+
+</a-entity>
+
+
+<a-entity position="8 0 -5">
+
+  <a-cylinder
+    radius="0.35"
+    height="2"
+    color="#6b4423"
+    position="0 1 0"
+  ></a-cylinder>
+
+  <a-sphere
+    radius="1.5"
+    color="#3f7f3a"
+    position="0 2.5 0"
+  ></a-sphere>
+
+</a-entity>
+
+
+<a-entity position="-8 0 5">
+
+  <a-cylinder
+    radius="0.35"
+    height="2"
+    color="#6b4423"
+    position="0 1 0"
+  ></a-cylinder>
+
+  <a-sphere
+    radius="1.5"
+    color="#3f7f3a"
+    position="0 2.5 0"
+  ></a-sphere>
+
+</a-entity>
+
+
+<a-entity position="8 0 5">
+
+  <a-cylinder
+    radius="0.35"
+    height="2"
+    color="#6b4423"
+    position="0 1 0"
+  ></a-cylinder>
+
+  <a-sphere
+    radius="1.5"
+    color="#3f7f3a"
+    position="0 2.5 0"
+  ></a-sphere>
+
+</a-entity>
+
+{/* ================================= */}
+{/* HARVEST TOWN CLOUDS */}
+{/* ================================= */}
+
+<a-entity position="-5 7 -8">
+
+  <a-sphere
+    radius="1.2"
+    color="#ffffff"
+  ></a-sphere>
+
+  <a-sphere
+    radius="1.5"
+    color="#ffffff"
+    position="1.2 0.2 0"
+  ></a-sphere>
+
+  <a-sphere
+    radius="1"
+    color="#ffffff"
+    position="2.4 0 0"
+  ></a-sphere>
+
+</a-entity>
+
+
+<a-entity position="5 8 -10">
+
+  <a-sphere
+    radius="1.1"
+    color="#ffffff"
+  ></a-sphere>
+
+  <a-sphere
+    radius="1.4"
+    color="#ffffff"
+    position="1.2 0.1 0"
+  ></a-sphere>
+
+  <a-sphere
+    radius="0.9"
+    color="#ffffff"
+    position="2.3 0 0"
+  ></a-sphere>
+
+</a-entity>
 
         {/* ================================= */}
         {/* QUESTION PANEL */}
@@ -534,6 +656,13 @@ setQuestionIndex(
           float-shape="amount: 0.15; speed: 0.002"
           
           rotation="0 30 0"
+          animation__rotate="
+  property: rotation;
+  to: 0 390 0;
+  loop: true;
+  dur: 12000;
+  easing: linear;
+"
 
           color="#e85d3f"
 
@@ -577,6 +706,14 @@ setQuestionIndex(
 
           color="#4d7cff"
 
+          animation__rotate="
+  property: rotation;
+  to: 360 360 360;
+  loop: true;
+  dur: 10000;
+  easing: linear;
+"
+
           animation__mouseenter="
             property: scale;
             to: 1.2 1.2 1.2;
@@ -615,6 +752,13 @@ setQuestionIndex(
           height="2.5"
 
           color="#f2c94c"
+          animation__rotate="
+  property: rotation;
+  to: 360 360 0;
+  loop: true;
+  dur: 12000;
+  easing: linear;
+"
 
           animation__mouseenter="
             property: scale;
