@@ -298,9 +298,8 @@ setQuestionIndex(
 
       <a-scene
   embedded
-  vr-mode-ui="enabled: true"
+  vr-mode-ui="enabled: true; cardboardModeEnabled: true"
   webxr="optionalFeatures: local-floor, bounded-floor"
-  cardboard-mode="enabled: true"
   device-orientation-permission-ui="enabled: true"
 >
 
