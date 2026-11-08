@@ -297,10 +297,12 @@ setQuestionIndex(
       {/* ================================= */}
 
       <a-scene
-        embedded
-        vr-mode-ui="enabled: true"
-        webxr="optionalFeatures: local-floor, bounded-floor"
-      >
+  embedded
+  vr-mode-ui="enabled: true"
+  webxr="optionalFeatures: local-floor, bounded-floor"
+  cardboard-mode="enabled: true"
+  device-orientation-permission-ui="enabled: true"
+>
 
 
         {/* ================================= */}
